@@ -1,0 +1,4 @@
+## Libs:
+torch
+sounddevice
+time
