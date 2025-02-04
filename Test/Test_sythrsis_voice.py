@@ -5,7 +5,7 @@ eng = pyttsx3.init()
 eng.setProperty("rate", 150)
 eng.setProperty("volume", 0.9)
 
-texts = "Привєт Дима"
+texts = "Hello Dima"
 
 print(texts)
 eng.say(text=texts)

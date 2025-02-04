@@ -5,11 +5,11 @@ import time
 language = "ua"
 model_id = "v4_ua"
 sample_rate = 48000
-speaker = "mykyta" # aidar, baya, kseniya, xenia, random
+speaker = "mykyta" # random
 put_accent = True
 put_yoo = True
 device = torch.device("cpu")
-texts = "Привіт Назар. Як справи?"
+texts = "Привіт Андрій. Як твої справи? Все добре?"
 
 
 model, _ = torch.hub.load(repo_or_dir="snakers4/silero-models",
@@ -18,14 +18,18 @@ model, _ = torch.hub.load(repo_or_dir="snakers4/silero-models",
                                      speaker=model_id)
 model.to(device)  # gpu or cpu
 
+def volume_sittes():
+    txt = str(input("Send Text: "))
+    audio = model.apply_tts(text=txt,
+                            speaker=speaker,
+                            sample_rate=sample_rate,
+                            put_accent=put_accent,
+                            )
 
-audio = model.apply_tts(text=texts,
-                        speaker=speaker,
-                        sample_rate=sample_rate,
-                        put_accent=put_accent,
-                        )
 
+    sd.play(audio, sample_rate)
+    volume_sittes()
+    # time.sleep(len(audio) / sample_rate)
+    # sd.stop()
 
-sd.play(audio, sample_rate)
-time.sleep(len(audio) / sample_rate)
-sd.stop()
+volume_sittes()
