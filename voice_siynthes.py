@@ -9,6 +9,7 @@ speaker = "mykyta" # random
 put_accent = True
 put_yoo = True
 device = torch.device("cpu")
+
 texts = "Привіт Андрій. Як твої справи? Все добре?"
 
 
@@ -18,7 +19,7 @@ model, _ = torch.hub.load(repo_or_dir="snakers4/silero-models",
                                      speaker=model_id)
 model.to(device)  # gpu or cpu
 
-def volume_sittes():
+def volume_sintes():
     txt = str(input("Send Text: "))
     audio = model.apply_tts(text=txt,
                             speaker=speaker,
@@ -28,8 +29,8 @@ def volume_sittes():
 
 
     sd.play(audio, sample_rate)
-    volume_sittes()
+    volume_sintes()
     # time.sleep(len(audio) / sample_rate)
     # sd.stop()
 
-volume_sittes()
+volume_sintes()
